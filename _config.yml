@@ -1,0 +1,9 @@
+# Site settings
+title: Dave's Blog
+email: dave@harris.org.nz
+description:
+baseurl: ""
+url: http://daveharris.github.io
+
+# Build settings
+markdown: kramdown

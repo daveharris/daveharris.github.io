@@ -1,0 +1,42 @@
+---
+layout: post
+title: How to automatically connect to Windows Share from a Mac at boot/wake
+categories:
+- How-to
+- Mac
+tags: []
+status: publish
+type: post
+published: true
+---
+<p>My current HTPC setup includes a <a title="Mac Mini" href="http://www.apple.com/macmini/">Mac Mini</a> sitting under a 40" LCD flatscreen running <a href="http://www.boxee.tv/">Boxee</a>.  All my media is sitting on a Windows 7 machine, with standard windows shares setup.  My MacMini doesn't have any mouse or keyboard, so everything needs to be done via the apple remote.  When not in use the MacMini sleeps so things to come up correctly when waking.</p>
+<p>Before coming up with a solution that worked, I tried a few other options;</p>
+<p><strong>Q.</strong> Doesn't Boxee have a built-in Windows Share (Samba) client?<br /><br />
+<strong>A.</strong> Well, yes technically it does.  However in practice I found it to be pretty unreliable.  Some shares would connect fine while some wouldn't, then the next day those that worked yesterday wouldn't connect.  I wasn't able to find any log file to say what the problem was.  Also another problem is that when you started Boxee it would connect, but it would take a while (~30 secs) before the media would show up as available.  Not a big issue but annoying when I want to watch something now!<br /><br />
+<em>Cateat: This was with the Boxee Alpha, I am currently using the beta which is much improved so these issues </em><strong><em>may</em></strong><em> be addressed.  Let me know in the comments, I would like to hear!<span style="font-style:normal;"> </span></em></p>
+<p><em><span style="font-style:normal;"><strong>Q.</strong> Why don't you use the standard Windows share mounting in Finder?<br /><br />
+<strong>A.</strong> The problem with this is that this only works for as long as you are logged in.  I can do a 'Reconnect at Login' by <a href="http://www.brightrev.com/how-to/apple/27-automatically-mount-a-windows-share-in-mac-os-x-tiger.html">adding the mounted Volume to Login Items</a>, but this has issues as well.  When the machine wakes from sleep, the volume says it's connected by there are no items in the volume.  Funny I know....<br /><br />
+<em>Cateat: This was with Mac OSX 10.5 Leopard so these issues </em><strong><em>may</em></strong><em> be addressed in 10.6 Snow Leopard.  Let me know in the comments, I would like to hear! </em></span></em></p>
+<p><strong>Q.</strong> OK smartie-pants, how did you make this work then?<br /><br />
+<strong>A. </strong>I'm glad you asked!  I used the power of <a href="http://www.autofs.org/">autofs</a>.  Autofs is a way of mounting local and remote filesystems, and is used by OSX already.  The setup is quite simple, but will require sudo/root access and simple use of command line tools.</p>
+<ol>
+<li>Create and edit a new file: sudo nano /etc/auto_smb</li>
+<li>Add an entry (one per line) to this file in the format
+<pre>-fstype=smbfs ://:@/</pre>
+Replace the  with the your details, for example my line is
+<pre>Photos -fstype=smbfs ://dave:secretPassword@windows/Photos</pre>
+</li>
+<li>Save &amp; quit (Ctrl+x) and run <code>chmod 700 /etc/auto_smb</code> to keep your password safe</li>
+<li>Now edit the master autofs configuration file:
+<pre>sudo nano /etc/auto_master</pre>
+</li>
+<li>Add a line that says:
+<pre>/Volumes auto_smb</pre>
+(You can set the first word to be whereever you want to volume mounted, but <code>/Volumes</code> is the default place in OSX)</li>
+<li> To force refresh run: <code>sudo automount -vc</code></li>
+<li> Done!</li>
+</ol>
+<p>This solution fulfils all my requirements and has been working great for 6+ months.  It doesn't matter what order I turn on my machines, the autofs daemon will see if the network is up and then mount the shares as soon as it can.  It doesn't seem to sit there trying non-stop to mount the share if unavailable either, so it seems quite lightweight.</p>
+<p>Occasionally I do get the annoying 'Shares are unavailable' window, but not usually.  If anyone has a solution for hiding this window I would love to hear it!  It floats above all other windows including Boxee.  I am ok with writing my password in the file as it just my local home network, I assume there are ways around this but I haven't bothered to investigate it.</p>
+<p>If you have similar setup or need help setting this up on your machine, let me know in the comments ;)</p>
+<p>Happy Sharing</p>
