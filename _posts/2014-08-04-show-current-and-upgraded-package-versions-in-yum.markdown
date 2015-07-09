@@ -1,11 +1,5 @@
 ---
-layout: post
 title: "Show current and upgraded package versions in Yum"
-date: 2014-08-04 14:37
-comments: true
-categories: 
-status: publish
-published: true
 categories:
 - ! '*nix'
 - How-to
