@@ -1,9 +1,6 @@
 ---
 layout: post
 title: "Owning Rails Course Notes"
-date: 2014-03-12 21:59
-comments: true
-categories: 
 tags:
 - ruby
 ---

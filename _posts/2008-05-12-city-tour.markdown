@@ -1,12 +1,8 @@
 ---
 layout: post
 title: City Tour
-categories:
+tags:
 - San Francisco
-tags: []
-status: publish
-type: post
-published: true
 ---
 Today was an amazing city tour that took in Muir Woods and Sausalito in the morning and then a city tour in the afternoon.
 

@@ -1,8 +1,7 @@
 ---
 title: "Show current and upgraded package versions in Yum"
 categories:
-- ! '*nix'
-- How-to
+- linux
 ---
 
 Have you ever wanted to know the list of packages which are about to be installed, including the current version and what version it is going to be updated to? Well, I have the solution:

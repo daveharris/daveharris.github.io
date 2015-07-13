@@ -1,12 +1,19 @@
 # Site settings
 title: Dave's Blog
-email: dave@harris.org.nz
 description:
 baseurl: ""
 url: http://daveharris.github.io
+# permalink: /:date/:title
+github_username: daveharris
+twitter_username: daveharrisnz
 
 # Build settings
 markdown: redcarpet
+
+# Tagging settings
+tag_page_layout: tag_page
+tag_page_dir: tag
+tag_permalink_style: pretty
 
 defaults:
   -

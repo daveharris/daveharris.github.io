@@ -1,13 +1,8 @@
 ---
 layout: post
 title: VLOOKUP Excel Function
-categories:
-- How-to
 tags:
 - excel
-status: publish
-type: post
-published: true
 ---
 Have you ever had list of status flags that have a meaning and within excel be able to change the number for the actual meaning?  Then this is for you!
 
@@ -36,4 +31,4 @@ Therefore a simple formula could be: <code>=VLOOKUP(B15, A26:B29, 2, FALSE)</cod
 
 If you need to perform this action on a whole table of data and need to keep it in a constant column, and the lookup table is on another sheet, this can be used: <code>=VLOOKUP(B2,Sheet2!$A$2:$B$5, 2, FALSE)</code>
 
-I cannot claim the credit for this albeit simple and well-documented function, all credit goes to "Phil Wheeler":http://www.youstupidpumpkin.com
+I cannot claim the credit for this albeit simple and well-documented function, all credit goes to "Phil Wheeler":http://wheeler.kiwi.nz/

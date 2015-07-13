@@ -1,12 +1,6 @@
 ---
 layout: post
 title: My New Motorbike
-categories:
-- Motorbike
-tags: []
-status: publish
-type: post
-published: true
 ---
 I know that this isn't tech-related at all and really don't want to turn this into a person blog where I write what I had for dinner but thought it would be a good place to put a pic of my new bike.
 
