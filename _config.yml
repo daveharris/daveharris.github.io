@@ -3,7 +3,7 @@ title: Dave's Blog
 description:
 baseurl: ""
 url: http://daveharris.github.io
-# permalink: /:date/:title
+permalink: /:title
 github_username: daveharris
 twitter_username: daveharrisnz
 
