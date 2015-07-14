@@ -8,46 +8,19 @@ Have you ever had list of status flags that have a meaning and within excel be a
 
 Assume you have this data:
 
-<table>
-  <tr>
-    <th>Customer Id </th>
-    <th>Payment Type </th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>2</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>1</td>
-  </tr>
-</table>
+Customer Id | Payment Type
+----------- | ------------
+1           | 2
+2           | 0
+3           | 1
 
 And you have a set of Payment Types:
 
-<table>
-  <tr>
-    <th>Payment Type Code </th>
-    <th>Payment Description </th>
-  </tr>
-  <tr>
-    <td>0</td>
-    <td>Cash</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Eftpos</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Credit Card</td>
-  </tr>
-</table>
-
+Payment Type Code | Payment Description
+----------------- | -------------------
+0                 | Cash
+1                 | Eftpos
+2                 | Credit Card
 
 If you have this data in an Excel spreadsheet you can use the `VLOOKUP` function to translate these numbers into meanings.  
 

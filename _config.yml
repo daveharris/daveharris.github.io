@@ -1,23 +1,64 @@
-# Site settings
-title: Dave's Blog
-description:
-baseurl: ""
-url: http://daveharris.github.io
+# SITE CONFIGURATION
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://example.com" # the base hostname & protocol for your site
+title: http://daveharris.github.io
+
 permalink: /:title
-github_username: daveharris
-twitter_username: daveharrisnz
 
-# Build settings
-markdown: redcarpet
+# THEME-SPECIFIC CONFIGURATION
+theme:
+  # Meta
+  title: Dave's Blog
+  # avatar: avatar.jpeg
+  gravatar: c1eafb98929c18113ff5a99b72fe2d38
+  description: "A website with blog posts and pages" # used by search engines
 
-# Tagging settings
+  # Header and footer text
+  header_text: 
+  header_text_feature_image:
+  footer_text: Powered by <a href="http://jekyllrb.com">Jekyll</a> with <a href="https://rohanchandra.github.io/project/type/">Type Theme</a>
+
+  # Icons
+  rss: false
+  email_address: # Full email address, e.g. "sam@example.com"
+  facebook:
+  flickr: "daveharris"
+  github: "daveharris"
+  twitter: "daveharrisnz"
+
+  # Scripts
+  google_analytics: # Tracking ID, e.g. "UA-000000-01"
+  disqus_shortname:
+  katex: false # Enable if using math markup
+
+  # Localization strings
+  str_follow_on: "Follow on"
+  str_rss_follow: "Follow RSS feed"
+  str_email: "Email"
+  str_next: "Next"
+  str_prev: "Prev"
+  str_continue_reading: "Continue reading"
+
+  # Colours, typography and padding
+  # Open the "_sass > base" folder, and open "_variables.scss"
+  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
+
+  # Post navigation
+  post_navigation: true
+
+# PAGINATION
+paginate: 10
+paginate_path: "blog/page:num"
+
+# TAGGING
 tag_page_layout: tag_page
 tag_page_dir: tag
 tag_permalink_style: pretty
 
-defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
-    values:
-      layout: "post"
+# BUILD SETTINGS
+# markdown: redcarpet
+markdown: kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: :compressed

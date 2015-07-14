@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "I've Moved to Octopress!"
 tags: 
 - meta

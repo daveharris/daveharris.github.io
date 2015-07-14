@@ -13,9 +13,9 @@ This is a bit of a brain-dump of what I learnt - but you should go on the course
 
 Because Ruby method calls will be called on `self` by default and brackets are not manditory, this means that the below statements are equivalent:
 
-```ruby
-before_filter :authenticate! ≡ HomeController.before_filter(:authenticate!)
-```
+{% highlight ruby %}
+before_filter :authenticate! == HomeController.before_filter(:authenticate!)
+{% endhighlight %}
 
 ## Modules vs Classes
 
@@ -50,6 +50,6 @@ Rack is a protocol, it defines how a webserver talks to Rails and how Rails talk
 
 Use `_` to ingore that variable, i.e.
 
-```ruby
+{% highlight ruby %}
 _, name = 'boring/important'.split('/')
-```
+{% endhighlight %}
