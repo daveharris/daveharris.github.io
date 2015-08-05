@@ -6,82 +6,65 @@ tags:
 - linux
 ---
 
-This is a list
-of steps and resources used to set up my Dlink DNS-323 RevB
+This is a list of steps and resources used to set up my Dlink DNS-323 RevB NAS.
 
-Phase 1: Upgrade firmware
--------------------------
+##Phase 1: Upgrade firmware
 
-Upgrade to the [latest
-firmware](http://www.dlink.com.au/tech/Download/download.aspx?product=DNS-323)
-Alternatively, use the custom [alt-f
-firmware](http://code.google.com/p/alt-f).
+Upgrade to the [latest firmware](http://www.dlink.com.au/tech/Download/download.aspx?product=DNS-323)
 
-Phase 2: Correctly format 4k drives
------------------------------------
+##Phase 2: Correctly format 4k drives
 
-Western Digital 4k sector drives (EARS) are not correctly formatted by
-the DNS-323, and [the partitions must be setup manually to align with
-the cylinder
-boundaries.](http://forums.dlink.com/index.php?topic=14484.0)
+Western Digital 4k sector drives (EARS) are not correctly formatted by the DNS-323, and [the partitions must be setup manually to align with
+the cylinder boundaries](http://forums.dlink.com/index.php?topic=14484.0).
 
-Phase 3: FFP
-------------
+##Phase 3: FFP
 
-### Phase 3.1: Standard FFP
+### 3.1: FFP
 
-[Install Fonz Fun\_plug
-(FFP)](http://nas-tweaks.net/CH3SNAS:Tutorials/fun_plug#Steps_for_installing_fun_plug)
-and enable ssh.  Then [setup additional
-packages](http://nas-tweaks.net/CH3SNAS:Tutorials/ffp-packages#Downloading_packages)
-and install bash, dnsmasq, screen, sudo and vim ffp packages
-**Advantage: Installs ssh, telnet, bash and other useful tools**
-*Disadvantage: Files stored on / ramdisk so have to replace modified
-config files each reboot.  Also there is still git package*
+[Install Fonz Fun Plug (FFP)](http://nas-tweaks.net/CH3SNAS:Tutorials/fun_plug#Steps_for_installing_fun_plug) and enable ssh.
+Then [setup additional packages](http://nas-tweaks.net/CH3SNAS:Tutorials/ffp-packages#Downloading_packages) and install `bash`, `dnsmasq`, `screen`, `sudo` and `vim` packages.
 
-### Phase 3.2: Optware
+**Advantage**: Installs `ssh`, `telnet`, `bash` and other useful tools
 
-[Install optware](http://wiki.dns323.info/howto:optware) which allows
-[many more
-packages](http://ipkg.nslu2-linux.org/feeds/optware/dns323/cross/unstable/)
-to be installed, which allows git installation *Disadvantage: Still have
-to workaround ramdisk issues and fragments package management - some
-built-in, some in ffp, some in optware*
+**Disadvantage**: Files stored on `/ramdisk` so have to replace modified config files each reboot.  No `git` package
 
-Phase 4: Debian chroot
-----------------------
+### 3.2: Optware
 
-### Phase 4.1: Debian Etch
+[Install optware](http://dns323.kood.org/howto:optware) which allows [many more packages](http://ipkg.nslu2-linux.org/feeds/optware/dns323/cross/unstable/) to be installed.
 
-[Download and install Debian Etch
-chroot](http://wiki.dns323.info/howto:chroot_debian#the_easy_way).
-[Follow the upgrade
-path](http://forum.dsmg600.info/viewtopic.php?pid=26426#p26426):
+**Advantage**: Installs `git`
 
--   Upgrade via apt-get to Debian Lenny.
--   Install samba, using the standard smb.conf as a base.
--   Create standard user account, lockdown ssh access
+**Disadvantage**: Still have to workaround ramdisk issues and fragments package management - some built-in, some in ffp, some in optware
 
-*Advantage: No more ramdisk issues, more control over package management
-and running a real linux distro* **Disadvantage: Running an old version
-of Debian (stable) which is arm, not the newer armel architecture**
+##Phase 4: Alt-f Replacement Firmware
 
-Phase 5: Alt-f Replacement Firmware
------------------------------------
+Debian Squeeze (testing at time of writing) is available only in the newer `armel`
+architecture, not in the older `arm` architecture.  The default firmware is `arm` and therefore cannot run squeeze.
 
-Debian Squeeze (debian-testing) is available only in the newer 'armel'
-architecture, not in the older 'arm' architecture.  The default firmware
-is arm and therefore cannot run squeeze.
- [Alt-f](code.google.com/p/alt-f) is an alternative custom firmware
-which is running on the 'armel' architecture as well as supporting some
-things that the default does not, such as ext4.  It can be run ontop of
+[Alt-f](http://sourceforge.net/projects/alt-f) is an alternative custom firmware
+which is running on the `armel` architecture as well as supporting some
+things that the default does not, such as `ext4`.  It can be run on-top of
 the default firmware, but that has the same problems ramdisk problems as
-before.  It an replace the default firmware by flashing the device but
+before. It an replace the default firmware by flashing the device but
 that seems a little dangerous and with limited benefit.  This may be
-required is Lenny is no longer supported.
+required is Lenny as no longer supported.
 
-### Phase 5.1: Debian Squeeze Chroot
+##Phase 5: Debian chroot
 
-[Download, create and install Debi﻿an
-Squeeze chroot﻿](http://forum.dsmg600.info/viewtopic.php?id=4330).
-*Advantage: A newer version (unstable) of Debian.*
+### 5.1: Debian Etch
+
+- [Download and install Debian Etch chroot](http://dns323.kood.org/howto:chroot_debian#the_easy_way).
+- [Follow the upgrade path](http://forum.dsmg600.info/viewtopic.php?pid=26426#p26426):
+- Upgrade via apt-get to Debian Lenny.
+- Install samba, using the standard smb.conf as a base.
+- Create standard user account, lockdown ssh access
+
+**Advantage**: No more ramdisk issues, more control over package management and running a real linux distro
+
+**Disadvantage**: Running an old version of Debian (stable) which is `arm`, not the newer `armel` architecture (which may not be supported anyway...)
+
+### 5.2: Debian Squeeze Chroot
+
+[Download, create and install Debian Squeeze chroot﻿](http://forum.dsmg600.info/viewtopic.php?id=4330).
+
+**Advantage**: A newer version (unstable) of Debian.
