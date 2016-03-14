@@ -1,7 +1,8 @@
-- Fix up ordering of JavaOne posts
-- Decide on a highlighting standard and use it...
-- Decide how to handle inline code and non-language code
-- Make top banner orange
-- Move Post title into header or reduce header size
-- If only next post available, show button on the right
-- Make hover colour green or orange?
+- [ ] Fix up ordering of JavaOne posts
+- [x] Decide on a highlighting standard and use it...
+- [x] Decide how to handle inline code and non-language code
+- [ ] Make top banner orange
+- [ ] Move Post title into header or reduce header size
+- [ ] If only next post available, show button on the right
+- [ ] Make hover colour green or orange?
+- [ ] Sort out tags
